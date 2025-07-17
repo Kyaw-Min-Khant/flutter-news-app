@@ -1,6 +1,7 @@
 import 'package:blog_app/features/home/view/home.dart';
 import 'package:blog_app/features/login/view/login.dart';
 import 'package:blog_app/features/new/view/new.dart';
+import 'package:blog_app/features/profile/view/profile.dart';
 import 'package:go_router/go_router.dart';
 
 // GoRouter configuration
@@ -9,7 +10,7 @@ final approuter = GoRouter(
   routes: [
     GoRoute(
       name:
-          'home', // Optional, add name to your routes. Allows you navigate by name instead of path
+          'home',
       path: '/',
       builder: (context, state) => Home(),
     ),
@@ -26,5 +27,6 @@ final approuter = GoRouter(
       path: '/login',
       builder: (context, state) => Login(),
     ),
+    GoRoute(path: '/profile',name:'profile',builder: (context,state)=> Profile())
   ],
 );

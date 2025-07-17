@@ -1,4 +1,5 @@
 import 'package:blog_app/core/providers/post_provider.dart';
+import 'package:blog_app/features/home/widgets/home_drawer.dart';
 import 'package:blog_app/features/home/widgets/news_list.dart';
 import 'package:blog_app/features/home/widgets/notifcation_icon.dart';
 import 'package:blog_app/features/home/widgets/search_bar.dart';
@@ -16,6 +17,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   // List<dynamic> posts = [];
   // bool isLoading = false;
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>(); // Add a GlobalKey
+
 
   @override
   void initState() {
@@ -50,8 +53,11 @@ class _HomeState extends State<Home> {
     }
 
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: HomeDrawer(),
       backgroundColor: const Color.fromARGB(255, 231, 231, 231),
       body: SafeArea(
+      
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 0),
           child: Column(
@@ -61,8 +67,7 @@ class _HomeState extends State<Home> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      debugPrint("Home");
-                    },
+                    _scaffoldKey.currentState?.openDrawer();                    },
                     icon: Icon(Icons.menu, size: 30),
                   ),
                   NotificationIcon(),
